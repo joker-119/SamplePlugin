@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EXILED;
 using Grenades;
 using MEC;
 
@@ -34,16 +35,9 @@ namespace SamplePlugin
 				hub.Broadcast(5, "Thanks for playing on the server!");
 		}
 
-		public void OnGrenadeThrown(ref GrenadeManager gm, ref int id, ref bool slow, ref double fuse, ref bool allow)
+		public void OnPlayerJoin(PlayerJoinEvent ev)
 		{
-			if (gm.inv.curItem == ItemType.SCP018)
-			{
-				//This hurts a player for 10 damage anytime they throw a ball
-				ReferenceHub hub = Plugin.GetPlayer(gm.ccm.gameObject);
-				hub.playerStats.HurtPlayer(
-					new PlayerStats.HitInfo(10, hub.nicknameSync.MyNick, DamageTypes.Grenade,
-						hub.queryProcessor.PlayerId), hub.gameObject);
-			}
+			ev.Player.Broadcast(5, "Welcome to the server!");
 		}
 	}
 }

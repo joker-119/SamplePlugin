@@ -18,7 +18,7 @@ namespace SamplePlugin
 				//Hook the events you will be using in the plugin. You should hook all events you will be using here, all events should be unhooked in OnDisabled 
 				Events.RoundStartEvent += EventHandlers.OnRoundStart;
 				Events.RoundEndEvent += EventHandlers.OnRoundEnd;
-				Events.GrenadeThrownEvent += EventHandlers.OnGrenadeThrown;
+				Events.PlayerJoinEvent += EventHandlers.OnPlayerJoin;
 				Info($"Sample plugin loaded. c:");
 			}
 			catch (Exception e)
@@ -32,7 +32,7 @@ namespace SamplePlugin
 		{
 			Events.RoundStartEvent -= EventHandlers.OnRoundStart;
 			Events.RoundEndEvent -= EventHandlers.OnRoundEnd;
-			Events.GrenadeThrownEvent -= EventHandlers.OnGrenadeThrown;
+			
 			EventHandlers = null;
 		}
 
